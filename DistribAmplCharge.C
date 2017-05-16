@@ -183,11 +183,13 @@ void DistribAmplCharge(bool ampl, TCut cut, TString fileName0, TString fileName1
 			cLeft->cd(ipad);
 		}
 		gPad->SetFillColor(kWhite);
-// 		gPad->SetBottomMargin(0);
-// 		gPad->SetTopMargin(0);
-// 		gPad->SetLeftMargin(0);
-// 		gPad->SetRightMargin(0);
-		TLegend* leg = new TLegend(0.7,0.6,1,1);
+ 		gPad->SetBottomMargin(1.1);
+ 		gPad->SetTopMargin(0);
+ 		gPad->SetLeftMargin(1.1);
+ 		gPad->SetRightMargin(0.03);
+ 		gPad->SetGridx(1);
+ 		gPad->SetGridy(1);
+		TLegend* leg = new TLegend(0.65,0.55,1,1);
 		for (int iC = 0; iC < 4; iC++) {
 			int iChanAbs240 = 4*iQ + iC;
 			if(histos[iChanAbs240]->Integral() != 0) {
@@ -205,8 +207,8 @@ void DistribAmplCharge(bool ampl, TCut cut, TString fileName0, TString fileName1
 				histos[iChanAbs240]->SetLineWidth(1);
 				histos[iChanAbs240]->SetFillStyle(3001);
 				histos[iChanAbs240]->SetFillColor(color);
-				histos[iChanAbs240]->GetXaxis()->SetLabelSize(0.055);
-				histos[iChanAbs240]->GetYaxis()->SetLabelSize(0.055);
+				histos[iChanAbs240]->GetXaxis()->SetLabelSize(0.09);
+				histos[iChanAbs240]->GetYaxis()->SetLabelSize(0.08);
 				if(iC == 0) {
 					histos[iChanAbs240]->Draw();
 				} else {
@@ -232,7 +234,7 @@ void DistribAmplCharge(bool ampl, TCut cut, TString fileName0, TString fileName1
 					cout << endl;
 					of << iChanAbs240 << " 0 0" << endl;
 				}
-				leg->AddEntry(histos[iChanAbs240], Form("iChanAbs240=%i", iChanAbs240), "f");
+				leg->AddEntry(histos[iChanAbs240], Form("Chan=%i", iChanAbs240), "f");
 			}
 		}
 		leg->SetLineWidth(0);
